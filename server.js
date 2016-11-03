@@ -11,6 +11,7 @@ var fs = require('fs');
 
 //Agregar paqueteria de colores
 var colors = require('colors');
+var mine = require('mime');
 colors.setTheme({
     "info":"rainbow",
     "data":"green",
@@ -30,8 +31,9 @@ var server = http.createServer(function(req, res){
     // res.writeHead(200,{
     //     'Content-Type':'text/html'  
     // });
-    var extension = path.split(".")[2];      
-            switch(extension){
+   var mimeType = mine.lookup(path);   
+      
+        /*    switch(extension){
                 case 'html':
                     res.writeHead(200,{
                         "Contenr-Type":"text/html"
@@ -47,8 +49,8 @@ var server = http.createServer(function(req, res){
                         "Contenr-Type":"text/css"
                     });
                 break;
-            }
-    fs.readFile(path,'utf8',function(err, content){
+            }*/
+    fs.readFile(path,function(err, content){
         if(err){
             console.log(`Error al leer archivo ${err}`);
             //decidiendo el content type de la extension del archivo solicitado
@@ -58,7 +60,10 @@ var server = http.createServer(function(req, res){
             res.end('Error 500: Internal Error...'.error);
         }else{
             //Sirve el archivo
-            console.log(">Se sirve el archivo: ./static/index.html".info);
+            res.writeHead(200,{
+                'Content-Type':mimeType
+            });
+            console.log(`>Se sirve el archivo: ${path}`.info);
             res.end(content);
         }
     });

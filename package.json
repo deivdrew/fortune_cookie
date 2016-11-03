@@ -17,5 +17,8 @@
     "server"
   ],
   "author": "@RicardoHdez",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mime": "^1.3.4"
+  }
 }
