@@ -1,76 +1,34 @@
 var http = require('http');
-//Cargando configuraciones
-var config = require('./config/config.js');
-var PORT = config.PORT;
-var IP = config.IP;
-var fs = require('fs');
-
-//Para importar los colores
-//Tema de colors....
-//colors.setTheme(config.color_theme);
-
-//Agregar paqueteria de colores
 var colors = require('colors');
-var mine = require('mime');
-colors.setTheme({
-    "info":"rainbow",
-    "data":"green",
-    "error":"red"
-});
-//req       peticion
-//res       respuesta
-var server = http.createServer(function(req, res){
-    var path = req.url;
-    if(path == '/'){
-        path = './static/index.html';
-    }else{
-        path = './static'+ path;
-    }
-    console.log(`Recurso solicitado: ${path}`.data);
-    //Codigo que ejecuta nuestro server cada que se le ingresa una peticion
-    // res.writeHead(200,{
-    //     'Content-Type':'text/html'  
-    // });
-   var mimeType = mine.lookup(path);   
-      
-        /*    switch(extension){
-                case 'html':
-                    res.writeHead(200,{
-                        "Contenr-Type":"text/html"
-                    });
-                break;
-                case 'js':
-                    res.writeHead(200,{
-                        "Contenr-Type":"text/javascript"
-                    });
-                break;
-                case 'css':
-                    res.writeHead(200,{
-                        "Contenr-Type":"text/css"
-                    });
-                break;
-            }*/
-    fs.readFile(path,function(err, content){
-        if(err){
-            console.log(`Error al leer archivo ${err}`);
-            //decidiendo el content type de la extension del archivo solicitado
-            res.writeHead(500,{
-                "Contenr-Type":"text/plain"
-            });
-            res.end('Error 500: Internal Error...'.error);
-        }else{
-            //Sirve el archivo
-            res.writeHead(200,{
-                'Content-Type':mimeType
-            });
-            console.log(`>Se sirve el archivo: ${path}`.info);
-            res.end(content);
-        }
-    });
-});
+var fs = require('fs');
+var mime = require('mime');
+var path = require('path');
+var staticServer = require('./Internals/static-server.js');
+var handlers = require('./Internals/handlers');
 
-server.listen(PORT, IP, function(){
-    console.log(`>Server woorking @http://${IP}:${PORT}`);
-    //Agregar colores en consola
-    //console.log(`>Server woorking @http://127.0.0.1:3000`.info);
+//cargando configuraciones
+var config = require('./config/config.js');
+var IP = config.IP;
+var PORT = config.PORT;
+// tema de colors
+//color_theme.setTheme(config.color_theme);
+var server = http.createServer(function (req, res) {
+    //extrayendo el path de la URL
+    var urlpath = req.url;
+    // normalizando el path en caso de no se pidea ningun recurso  
+    if(urlpath==="/"){
+        urlpath =("/index.html");
+    }
+     if (typeof(handlers[urlpath]) === "function"){
+         handlers[urlpath](req,res);
+     }else {
+        //se llama al servidor estatico
+        staticServer.serve(urlpath,res);
+     }
+    
+
+       
+});
+server.listen(PORT, IP, function () {
+    console.log(`> Server working @http://${IP}:${PORT}/`)
 });

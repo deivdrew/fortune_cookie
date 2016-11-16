@@ -1,0 +1,26 @@
+{
+  "name": "08fortune_cookie",
+  "description": "proyecto final de paw",
+  "main": "server.js",
+  "authors": [
+    "Eduardo <er96099@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "http_server"
+  ],
+  "homepage": "https://github.com/Romero1991/fortune_cookie",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "install": "^1.0.4",
+    "sweetalert": "^1.1.3"
+  }
+}

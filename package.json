@@ -1,24 +1,24 @@
 {
   "name": "08fortune_cookie",
   "version": "1.0.0",
-  "description": "Proyecto final de PAW",
+  "description": "proyecto final de paw",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "#"
   },
   "keywords": [
-    "Node",
-    "http",
-    "server"
+    "http_server"
   ],
-  "author": "@RicardoHdez",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "mime": "^1.3.4"
+    "colors": "^1.1.2",
+    "mime": "^1.3.4",
+    "nodemon": "^1.11.0"
   }
 }
