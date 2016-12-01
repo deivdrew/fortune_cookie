@@ -1,29 +1,34 @@
 var path = require('path'),
-     fs = require('fs');
-//Creando manejadores. Los manejadores son somples funciones. 
-
+     fs = require('fs'),
+     fortune = require('./fortune');
+//Creando funciones(Manejadores)
 var _getAuthor = function(req,res){
-    res.end("Autor: David.");
+    res.end("Autor:Francisco David Chamorro Garcia.");
+};
+/* 
+        function fortuna(){
+             var fortuna =["si la felicidad deseas encontrar a tu admirador debes amar","Se feliz y no te deprimas por nada,vive plenamente",
+      "Esdudia , disfruta, vive", "Se feliz, sin preocuparte por lo malo  que pueda pasar",
+      "una sonrisa es la forma mas facil de afrontar las situaciones dificiles incluso si es falsa",
+      "Jamas retrocedas a tu camino, lucha por lo que quieres"];
+      var rand = fortuna[Math.floor(Math.random()* fortuna.length)];
+      return rand;
+}*/
+    //Recordemos que mis estamos trabajando de la forma no bloqueante.--
+    var _getFortune = function (req,res){
+    console.log('>recurso de galleta solicitada...');
+    //--------------------------------------------------------------------    
+    fortune.getFortune(function(fortunePaperObj){
+    //En esta parte configuramos la aplicacion para que reconosca cualquier tipo de archivo.
+    res.writeHead(200,{
+        "Content-Type" : "application/json"
+    });
+    console.log(`>mostrando lo que contiene fortunePaperObj: ${fortunePaperObj}`);
+    res.end(fortunePaperObj);
+    });
 };
 
-var _getFortune = function texto_aleatorio(req,res){
-    //res.end("Si quieres ser feliz debes comer mucho :D");
 
-   var fortunas = new Array() 
-   res.end(fortunas[0] = "Si la felicidad quieres encontrar a tu admirador debes amar." );
-   res.end(fortunas[1] = "Distribuimos en todo el mundo con los mejores tiempos de    entrega y fiabilidad de los envíos." );
-   res.end(fortunas[2] = "No tenemos competidores que nos hagan sombra. Contrate con    nosotros y compuébelo. Así de fácil." );
-   res.end(fortunas[3] = "Disponga del mejor servicio de atención al cliente y una    respuesta rápida a sus problemas." );
-   res.end(fortunas[4] = "Los mejores servicios, productos y, como no, los menores    precios. Todo son ventajas." );
-   aleat = Math.random() * (fortunas.length) 
-   aleat = Math.floor(aleat) 
-   document.write(fortunas[aleat])
-
-}
- 
-
-
-// ----
 // objeto manejador.
 
 var handler = {};

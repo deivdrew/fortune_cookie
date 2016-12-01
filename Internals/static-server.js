@@ -3,22 +3,17 @@ var fs = require('fs'),
     path = require('path'),
     config = require('../config/config.js');
     
-
 exports.serve = function (url, res) {
     var urlpath = path.resolve(config.STATIC_PATH + url);
-    console.log(`>Recusrso Solicitado: ${urlpath}`);
-
-
+    console.log(`>Recurso_solicitado: ${urlpath}`);
     fs.exists(urlpath, function (exists) {
         if (!exists) {
-            //No existe 
+            
             res.writeHead(404, {
                 'Content-Type': 'text/html'
             });
             res.end('<h1>404 Not Found</h1>')
         } else {
-            //existe
-            // Decidiendo el conetent-Type enfuncion de la extencion del archivo solicitado
             var mimeType = mime.lookup(urlpath);
             fs.readFile(urlpath,
                 function (err, Content) {
