@@ -1,19 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <link rel="stylesheet" href="./vendor/sweetalert/dist/sweetalert.css">
-    <link rel="stylesheet" href="./css/site.css">
-   <link rel="icon" type="image/icon" href="./img/sasuke.ico">
-    <meta charset="UTF-8">
-    <title>Mi sitio asombroso</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Mi sitio asombroso</title>
+
+  <!-- CSS  -->
+   <link rel="stylesheet" href="./vendor/sweetalert/dist/sweetalert.css">
+  <link rel="stylesheet" href="./css/site.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="icon" type="image/icon" href="./sasuke.ico">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-     <h1>Galleta de la Fortuna</h1>
-     <p>Si desea saber su Fortuna haga click en el siguiente boton</p>
-     <!--Importando script sweetalert-->
-     <p><button onclick="fortuna()">romper galleta</button></p>
-     <script src="./vendor/sweetalert/dist/sweetalert.min.js"></script>
-     <script src="./js/site.js"></script>
-     
-</body>
+  <nav class="brown" role="navigation">
+    <div class="nav-wrapper container">
+     <a id="logo-container" href="#" class="brand-logo"> <marquee behavior="scroll"><font color ="skyblue">Programacion de aplicaciones web</a></marquee></font>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">s</i></a>
+      
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h3 class="header center teal-text text-lighten-2"><font color ="Skyblue"><img src="./galleta.gif">Fortune<img src="./galleta.gif"></font></h3>
+        <div class="row center">
+        
+ <h5 class="header col s12 light"><font color="black"><strong><marquee direction="up" SCROLLAMOUNT= 2>hoy es un buen dia, vamos a ver que te depara tu fortuna.</strong></marquee></font></h5>
+        </div>
+        <div class="row center">
+         
+          <font color="skyblue"><p>Da click en la galleta para saber tu fortuna</font></p>
+           <p><button onclick="getFortuneFromServer()" style="background:#F0FCA0">ROMPER GALLETA</button></p> 
+           
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="akatzuki.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons"></i></h2>
+            <h5 class="center"></h5>
+
+            <p class="light"></p>
+          </div>
+        </div>
+
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons"></i></h2>
+            <h5 class="center"></h5>
+
+            <p class="light"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div> 
+  
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light"><font color ="skyblue"><strong>Desarrollado en la materia programacion de aplicaciones web. 
+            <br> Chamorro Garcia Francisco David</br>
+            <br> No sabemos lo que nos depara el futuro, asi que vive plenamente, disfruta lo que haces</strong></br></font>
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="akatzuki.jpg" alt="Unsplashed background img 2"></div>
+  </div> 
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="./vendor/jquery/dist/jquery.min.js"></script>
+  <script src="./vendor/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="./js/site.js"></script>
+
+  </body>
 </html>
